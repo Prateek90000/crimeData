@@ -73,3 +73,17 @@ TOP2arrests = table(TOP2$LocationDescription, TOP2$Arrest)
 View(TOP2arrests)
 TOP2arrests = as.data.frame(table(TOP2$LocationDescription, TOP2$Arrest))
 View(TOP2arrests)
+
+
+# Create new analysis from the existing tables.
+# Like percentage arrests per month, or percentage arrests per location
+TOP2arrests = as.data.frame(table(TOP2$LocationDescription, TOP2$Arrest))
+View(TOP2arrests)
+TOP2arrests = as.data.frame.matrix(table(TOP2$LocationDescription, TOP2$Arrest))
+View(TOP2arrests)
+# Give names to your columns (compulsory)
+colnames(TOP2arrests) <- c("notArrested","Arrested")
+# Give names to your rows (optional)
+rownames(TOP2arrests) <- c("ParkingLot","Street")
+TOP2arrests$pctArrests  = TOP2arrests$Arrested/(TOP2arrests$notArrested + TOP2arrests$notArrested)
+View(TOP2arrests)
